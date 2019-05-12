@@ -1,0 +1,67 @@
+body,
+button {
+	align-items: center;
+	color: #454545;
+	display: flex;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-size: 20px;
+	height: 100vh;
+	justify-content: center;
+}
+
+.calculator {
+	background-color: #eee;
+	border-radius: 5px;
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(4, 50px);
+	grid-template-rows: repeat(6, min-content);
+	padding: 20px;
+	width: 230px;
+}
+
+.calculator__display {
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 5px;
+	display: inline-block;
+	font-size: 36px;
+	grid-area: 1 / 1 / 2 / 5;
+	margin-bottom: 10px;
+	padding: 5px;
+	text-align: right;
+}
+
+.button {
+	border: 0;
+	border-radius: 50px;
+	height: 50px;
+	width: 50px;
+}
+
+.button--operator {
+	background-color: #6668cc;
+	color: #fff;
+}
+
+.multiply {
+	grid-area: 3 / 4 / 4 / 5;
+}
+
+.subtract {
+	grid-area: 4 / 4 / 5 / 5;
+}
+
+.add {
+	grid-area: 5 / 4 / 6 / 5;
+}
+
+.equals {
+	grid-area: 6 / 4 / 7 / 5;
+}
+
+.zero {
+	grid-area: 6 / 1 / 7 / 3;
+	width: auto;
+}
