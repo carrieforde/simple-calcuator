@@ -1,10 +1,7 @@
-// @flow
-/* eslint-disable */
-
 import Compute from './compute';
 
 class Calculator {
-  constructor(calc, display) {
+  constructor(calc: String, display) {
     this.calculator = document.querySelector(calc);
     this.display = this.calculator.querySelector(display);
     this.displayValue = '0';

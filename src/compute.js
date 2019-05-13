@@ -1,4 +1,3 @@
-/* eslint-disable */
 class Compute {
   constructor(capacity) {
     this.capacity = capacity || Infinity;
@@ -66,27 +65,27 @@ class Compute {
   }
 
   plusMinus(value) {
-    return value * -1;
+    return parseFloat(value) * -1;
   }
 
   percent(value) {
-    return value / 100;
+    return parseFloat(value) / 100;
   }
 
   add(num1, num2) {
-    return num1 + num2;
+    return parseFloat(num1) + parseFloat(num2);
   }
 
   subtract(num1, num2) {
-    return num1 - num2;
+    return parseFloat(num1) - parseFloat(num2);
   }
 
   multiply(num1, num2) {
-    return num1 * num2;
+    return parseFloat(num1) * parseFloat(num2);
   }
 
   divide(num1, num2) {
-    return num1 / num2;
+    return parseFloat(num1) / parseFloat(num2);
   }
 }
 
