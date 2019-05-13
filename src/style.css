@@ -38,12 +38,41 @@ button {
 	border: 0;
 	border-radius: 50px;
 	height: 50px;
+	transition: background-color 0.2s ease;
 	width: 50px;
 }
 
 .button--operator {
 	background-color: #6668cc;
 	color: #fff;
+}
+
+.button--active {
+	background-color: hotpink;
+}
+
+.one {
+	grid-area: 5 / 1 / 6 / 2;
+}
+
+.three {
+	grid-area: 5 / 3 / 6 / 5;
+}
+
+.four {
+	grid-area: 4 / 1 / 5 / 2;
+}
+
+.six {
+	grid-area: 4 / 3 / 5 / 5;
+}
+
+.seven {
+	grid-area: 3 / 1 / 4 / 2;
+}
+
+.nine {
+	grid-area: 3 / 3 / 4 / 5;
 }
 
 .multiply {
