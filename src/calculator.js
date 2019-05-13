@@ -1,13 +1,15 @@
 // @flow
 /* eslint-disable */
+
+import Compute from './compute';
+
 class Calculator {
   constructor(calc, display) {
     this.calculator = document.querySelector(calc);
     this.display = this.calculator.querySelector(display);
     this.displayValue = '0';
-    this.computed = 0;
-    this.lastInput = '';
-    this.lastOperator = '';
+
+    this.compute = new Compute(3);
 
     this.update = new CustomEvent('update', { bubbles: true });
 
@@ -27,76 +29,12 @@ class Calculator {
 
   updateDisplayValue(value) {
     if (
-      this.displayValue === '0' ||
+      (this.displayValue === '0' && value !== '0') ||
       (isNaN(parseFloat(this.lastInput)) && this.lastInput !== '.')
     ) {
       this.displayValue = value;
     } else {
       this.displayValue += value;
-    }
-  }
-
-  clear() {
-    this.displayValue = '0';
-    this.computed = 0;
-  }
-
-  plusMinus() {
-    this.displayValue = (parseFloat(this.displayValue) * -1).toString();
-  }
-
-  percent() {
-    this.displayValue = (parseFloat(this.displayValue) / 100).toString();
-  }
-
-  add() {
-    this.computed = this.computed + parseFloat(this.displayValue);
-    this.displayValue = this.computed.toString();
-  }
-
-  subtract() {
-    this.computed = this.computed - parseFloat(this.displayValue);
-    this.displayValue = this.computed.toString();
-  }
-
-  multiply() {
-    this.computed = this.computed * parseFloat(this.displayValue);
-    this.displayValue = this.computed.toString();
-  }
-
-  divide() {
-    this.computed = this.computed / parseFloat(this.displayValue);
-    this.displayValue = this.computed.toString();
-  }
-
-  equals() {
-    this.performOperation(this.lastOperator);
-  }
-
-  performOperation(operator) {
-    switch (operator) {
-      case 'divide':
-        this.divide();
-        break;
-
-      case 'multiply':
-        this.multiply();
-        break;
-
-      case 'subtract':
-        this.subtract();
-        break;
-
-      case 'add':
-        this.add();
-        break;
-
-      case 'equals':
-        this.equals();
-        break;
-
-      default:
-        console.error('An error has occurred.');
     }
   }
 
@@ -112,28 +50,22 @@ class Calculator {
     }
 
     if (target.classList.contains('button--function')) {
-      switch (target.getAttribute('id')) {
-        case 'clear':
-          this.clear();
-          break;
+      const fnName = target.getAttribute('id');
 
-        case 'plus-minus':
-          this.plusMinus();
-          break;
-
-        case 'percent':
-          this.percent();
-          break;
-
-        default:
-          console.error('An error has occurred.');
+      if (fnName === 'allClear') {
+        this.displayValue = this.compute.allClear();
+      } else {
+        this.displayValue = this.compute[fnName](parseFloat(this.displayValue));
       }
     }
 
     if (target.classList.contains('button--operator')) {
       const operator = target.getAttribute('id');
-      this.performOperation(operator);
-      this.lastOperator = operator;
+
+      this.displayValue = this.compute.update(
+        parseFloat(this.displayValue),
+        operator
+      );
     }
 
     this.lastInput = target.getAttribute('id');
