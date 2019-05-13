@@ -42,13 +42,21 @@ button {
 	width: 50px;
 }
 
+.button--active {
+	background-color: #ccc;
+}
+
 .button--operator {
 	background-color: #6668cc;
 	color: #fff;
 }
 
-.button--active {
-	background-color: hotpink;
+.button--operator.button--active {
+	background-color: #8c8ed9;
+}
+
+.plus-minus {
+	font-size: 15px;
 }
 
 .one {
